@@ -7,7 +7,9 @@
     "dev": "$npm_node_execpath ./node_modules/vite/bin/vite.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "cypress open",
+    "test:e2e:run": "cypress run"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -19,6 +21,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.1.0",
+    "cypress": "^15.6.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.24",

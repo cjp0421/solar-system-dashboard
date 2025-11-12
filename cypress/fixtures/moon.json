@@ -1,0 +1,21 @@
+{
+  "id": "lune",
+  "name": "La Lune",
+  "englishName": "Moon",
+  "isPlanet": false,
+  "bodyType": "Moon",
+  "aroundPlanet": {
+    "planet": "earth",
+    "rel": "https://api.le-systeme-solaire.net/rest/bodies/terre"
+  },
+  "mass": {
+    "massValue": 7.346,
+    "massExponent": 22
+  },
+  "meanRadius": 1737.4,
+  "gravity": 1.62,
+  "density": 3.34,
+  "sideralOrbit": 27.321661,
+  "sideralRotation": 655.72,
+  "escape": 2380
+}
