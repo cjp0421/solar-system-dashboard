@@ -1,10 +1,109 @@
+import { AppBar, Box, Button, Stack, Toolbar, Typography } from "@mui/material"
 
 
 function App() {
 
   return (
     <>
-      <h1>Hiya, Moon!</h1>
+      <header>
+        <AppBar component="nav">
+          <Toolbar
+            sx={{
+              backgroundColor: '#000'
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                flexGrow: 1,
+              }}
+            >
+              Solar System Dashboard
+            </Typography>
+            <Button
+              href={`#About`}
+              key={"about"}
+              sx={{
+                color: '#fff',
+                backgroundColor: '#000'
+              }}
+            >
+              About
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </header>
+      <Stack
+        component="section"
+        direction="row"
+        sx={{
+          mt: 12,
+          mb: 3,
+          minHeight: '80vh',
+        }}>
+        <Box
+          sx={{
+            margin: '0 auto',
+            alignContent: 'center',
+            textAlign: 'center',
+            p: 1
+          }}
+        >
+          <Typography
+            variant="h1"
+            align="center"
+            sx={{
+              fontSize: '3rem',
+            }}
+          >
+            Learn More
+          </Typography>
+          <Typography
+            variant="h2"
+            align="center"
+            sx={{
+              fontSize: '3rem'
+            }}
+          >
+            About Earth's Moon
+          </Typography>
+          <Button
+            href="#moon-facts"
+            variant="contained"
+            sx={{
+              mt: 2,
+              backgroundColor: '#000'
+            }}
+          >
+            Go to Moon Data
+          </Button>
+        </Box>
+        <Box
+          component="img"
+          alt="NASA image of Earth's Moon"
+          src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001982/GSFC_20171208_Archive_e001982~orig.jpg?w=1536&h=864&fit=clip&crop=faces%2Cfocalpoint"
+          sx={{
+            borderRadius: '5%',
+            margin: '0 auto',
+            width: { xs: 240, sm: 300, md: 600 },
+            height: 'auto',
+            objectFit: 'cover',
+            boxShadow: 3,
+          }}
+        />
+      </Stack>
+      <Box component="section">
+        <Typography
+          id="moon-facts"
+          variant="h3"
+          sx={{
+            fontSize: '1.5rem',
+            p: 2
+          }}
+        >
+          Facts About Earth's Moon
+        </Typography>
+      </Box>
     </>
   )
 }
