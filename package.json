@@ -7,7 +7,7 @@
     "dev": "$npm_node_execpath ./node_modules/vite/bin/vite.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "preview": "vite preview --port 5173 --strictPort",
     "test:e2e": "cypress open",
     "test:e2e:run": "cypress run"
   },
