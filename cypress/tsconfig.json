@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.app.json",
+  "compilerOptions": {
+    "composite": true,
+    "types": [
+      "cypress",
+      // "node",
+      // "mocha"
+    ],
+    "noEmit": true,
+    "isolatedModules": false
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "exclude": [
+    "../node_modules"
+  ]
+}
