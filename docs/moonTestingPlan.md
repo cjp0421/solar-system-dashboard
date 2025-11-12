@@ -17,7 +17,7 @@ These illustrate the three primary UI states under test:
 
 > These wireframes were designed in Figma to define the layout and expected component behavior for iteration 1.  
 > The circular Hero image in the Success and Loading states references:  
-> [Pixabay Full Moon Image](https://pixabay.com/photos/full-moon-night-sky-luna-moon-1869760/)
+> [Pixabay Full Moon Image](https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001982/GSFC_20171208_Archive_e001982~orig.jpg?w=1536&h=864&fit=clip&crop=faces%2Cfocalpoint)
 
 ---
 
@@ -117,7 +117,7 @@ All tests for this iteration live in:
 1. Visit `/`.
 2. Assert header shows “Solar System Dashboard” and “About”.
 3. Assert headline “Learn More About Earth’s Moon” is visible.
-4. Assert the Hero image (Pixabay URL) is rendered correctly and visible.
+4. Assert the Hero image (NASA url) is rendered correctly and visible.
 5. Assert button “Go to Moon Data” is visible and clickable.
 6. Click the button.
 7. Assert that the page scrolls or jumps to the “Facts About the Moon” section (e.g., `#moon-facts`).
