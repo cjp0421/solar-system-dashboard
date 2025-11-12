@@ -43,7 +43,7 @@ Tech stack:
   - Headline: “Learn More About Earth’s Moon.”
   - CTA button labeled “Go to Moon Data.”
   - Circular image on the right side loaded from Pixabay:  
-    [Full Moon Photo – Pixabay](https://pixabay.com/photos/full-moon-night-sky-luna-moon-1869760/)
+    [Full Moon Photo – Pixabay](https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001982/GSFC_20171208_Archive_e001982~orig.jpg?w=1536&h=864&fit=clip&crop=faces%2Cfocalpoint)
 - **Moon facts section:**
   - Fetching Moon data from `/rest/bodies/lune`.
   - Displaying these core fields in a structured layout:
@@ -127,57 +127,63 @@ Hero section renders on page load with correct text, image, and CTA. Clicking �
 
 ---
 
-### MD-001 – Displays Moon data after successful load
-**Goal:** Confirm that the Moon data is rendered from the fixture after a successful API response.
+## MD-001 – Shows Skeleton loaders while data is fetching
+**Goal:** Verify that Skeleton placeholders appear immediately while Moon data is loading.
 
 **Steps**
-1. Stub `GET **/bodies/lune` → `moon.json`.
+1. Stub `GET **/bodies/lune` with:
+    { fixture: 'moon.json', delay: 1500 }
 2. Visit `/`.
-3. Wait for the request to complete.
-4. Assert visible heading “Facts About the Moon.”
-5. Assert labeled fields and values appear:
-   • Mass `7.346 × 10²² kg`  
-   • Mean Radius `1737.4 km`  
-   • Gravity `1.62 m/s²`  
-   • Density `3.34 g/cm³`  
-   • Sideral Orbit `27.32 days`  
-   • Sideral Rotation `655.72 hours`  
-   • Escape Velocity `2380 m/s`
-6. Assert Skeletons are not visible after data load.
+3. Immediately assert Skeleton elements are visible  
+   (for example, `[data-testid="skeleton-loader"]` or elements with `role="progressbar"`).
+4. Assert that no Moon data fields (labels or values like “Mass”, “Gravity”) are visible yet.
+5. After waiting for the request (for example, `cy.wait('@getMoon')`), assert:
+   - Skeletons disappear
+   - Real Moon data begins rendering
 
 **Expected Result**  
-Moon data displays clearly with labels and units; Skeletons and error states are gone.
+Skeletons appear during loading and are fully replaced by real content once data arrives.
 
 ---
 
-### MD-002 – Shows Skeleton loaders while data is fetching
-**Goal:** Ensure placeholder Skeletons appear during loading.
+## MD-002 – Displays Moon data after successful load
+**Goal:** Confirm the UI shows correctly formatted Moon data after a successful API response.
 
 **Steps**
-1. Stub API with a `delay` (e.g. 1500 ms).
+1. Stub `GET **/bodies/lune` to return `moon.json` (no delay).
 2. Visit `/`.
-3. Immediately assert Skeleton elements are visible (`[data-testid="skeleton-loader"]` or `role="progressbar"`).
-4. Assert Moon data text (like “Gravity” or “Mass”) is not visible yet.
-5. After fetch completes, assert Skeletons disappear and real data appears.
+3. Wait for the API request to complete (for example, `cy.wait('@getMoon')`).
+4. Assert that a visible heading like “Facts About the Moon” is present.
+5. Assert labeled fields and formatted values appear, for example:
+   - Mass: `7.346 × 10²² kg`
+   - Mean Radius: `1737.4 km`
+   - Gravity: `1.62 m/s²`
+   - Density: `3.34 g/cm³`
+   - Sideral Orbit: `27.32 days`
+   - Sideral Rotation: `655.72 hours`
+   - Escape Velocity: `2380 m/s`
+6. Assert that no Skeleton components remain visible.
+7. Assert that no error message is visible.
 
 **Expected Result**  
-Skeleton placeholders appear while loading and are replaced by actual data after completion.
+Moon data displays clearly with labels and correct formatting, and only the final content (no Skeletons or errors) is visible.
 
 ---
 
-### MD-003 – Shows error message on API failure
-**Goal:** Confirm that the app handles API failures gracefully.
+## MD-003 – Shows error message on API failure
+**Goal:** Ensure the UI handles failed API calls gracefully.
 
 **Steps**
-1. Stub `GET **/bodies/lune` → `statusCode: 500`.
+1. Stub `GET **/bodies/lune` to return an error response (for example, `statusCode: 500`).
 2. Visit `/`.
-3. Assert that a visible error message (“Unable to load Moon data. Please try again later.”) is present.
-4. Assert that no Skeletons or data fields remain visible.
+3. Assert that a visible error message appears, such as:  
+   “Unable to load Moon data. Please try again later.”
+4. Assert that:
+   - No Skeletons are visible
+   - No Moon data fields (labels or values) are rendered
 
 **Expected Result**  
-User sees a clear error message; no partial data or stuck loading states.
-
----
+A friendly error message is shown, with no partial or stale data on screen.
 
 ### MD-004 – Accessibility structure
 **Goal:** Verify semantic structure and accessibility.
