@@ -128,32 +128,33 @@ Hero section renders on page load with correct text, image, and CTA. Clicking �
 ---
 
 ## MD-001 – Shows Skeleton loaders while data is fetching
-**Goal:** Verify that Skeleton placeholders appear immediately while Moon data is loading.
+**Goal:** Verify that Skeleton placeholders appear during loading and clear once data arrives.
 
 **Steps**
 1. Stub `GET **/bodies/lune` with:
     { fixture: 'moon.json', delay: 1500 }
 2. Visit `/`.
 3. Immediately assert Skeleton elements are visible  
-   (for example, `[data-testid="skeleton-loader"]` or elements with `role="progressbar"`).
+   (e.g. elements with `role="progressbar"`).
 4. Assert that no Moon data fields (labels or values like “Mass”, “Gravity”) are visible yet.
-5. After waiting for the request (for example, `cy.wait('@getMoon')`), assert:
-   - Skeletons disappear
-   - Real Moon data begins rendering
+5. After `cy.wait('@getMoon')`, assert:
+   - Skeletons are no longer visible.
+   - At least one Moon data field is now visible (e.g. “Gravity”).
 
 **Expected Result**  
-Skeletons appear during loading and are fully replaced by real content once data arrives.
+Skeletons appear while the request is in flight, then disappear once data is loaded, and the UI does not get “stuck” in a loading state.
+
 
 ---
 
 ## MD-002 – Displays Moon data after successful load
-**Goal:** Confirm the UI shows correctly formatted Moon data after a successful API response.
+**Goal:** Confirm the success state shows all Moon data with correct labels and formatting.
 
 **Steps**
 1. Stub `GET **/bodies/lune` to return `moon.json` (no delay).
 2. Visit `/`.
-3. Wait for the API request to complete (for example, `cy.wait('@getMoon')`).
-4. Assert that a visible heading like “Facts About the Moon” is present.
+3. Wait for the API request to complete (e.g. `cy.wait('@getMoon')`).
+4. Assert that a heading like “Facts About the Moon” is visible.
 5. Assert labeled fields and formatted values appear, for example:
    - Mass: `7.346 × 10²² kg`
    - Mean Radius: `1737.4 km`
@@ -162,11 +163,12 @@ Skeletons appear during loading and are fully replaced by real content once data
    - Sideral Orbit: `27.32 days`
    - Sideral Rotation: `655.72 hours`
    - Escape Velocity: `2380 m/s`
-6. Assert that no Skeleton components remain visible.
+6. Assert that no Skeleton components are visible.
 7. Assert that no error message is visible.
 
 **Expected Result**  
-Moon data displays clearly with labels and correct formatting, and only the final content (no Skeletons or errors) is visible.
+The final success state shows all Moon data correctly labeled and formatted, with only the “real” content on screen (no loaders, no errors).
+
 
 ---
 
@@ -174,16 +176,17 @@ Moon data displays clearly with labels and correct formatting, and only the fina
 **Goal:** Ensure the UI handles failed API calls gracefully.
 
 **Steps**
-1. Stub `GET **/bodies/lune` to return an error response (for example, `statusCode: 500`).
+1. Stub `GET **/bodies/lune` to return an error response (e.g. `statusCode: 500`).
 2. Visit `/`.
 3. Assert that a visible error message appears, such as:  
    “Unable to load Moon data. Please try again later.”
 4. Assert that:
-   - No Skeletons are visible
-   - No Moon data fields (labels or values) are rendered
+   - No Skeletons are visible.
+   - No Moon data fields (labels or values) are rendered.
 
 **Expected Result**  
-A friendly error message is shown, with no partial or stale data on screen.
+A friendly error message is shown, and the user does not see partial or stale data.
+
 
 ### MD-004 – Accessibility structure
 **Goal:** Verify semantic structure and accessibility.
