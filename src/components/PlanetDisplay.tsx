@@ -1,4 +1,4 @@
-import { Grid, Skeleton, Stack, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Skeleton, Stack, Typography } from "@mui/material";
 import { buildMoonFactRows } from "./utils/buildFactRows";
 import type { CelestialBody } from "../types/celestialBody";
 
@@ -26,37 +26,25 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                 </Stack>
             ) : (
                 (isError ? (<p>🚨ERROR🚨</p>) :
-                    <Stack
+                    <Grid
                         component="section"
+                        container
                     >
                         {rows.map((row) => (
-                            <Grid
-                                container
+                            <Card
+                                key={row.label}
+                                sx={{
+                                    width: '50%'
+                                }}
                             >
-                                <Grid
-                                    size={{
-                                        sm: 6
-                                    }}
-                                    sx={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        mx: 4
-                                    }}
-                                    key={row.label}
-                                >
-                                    <Typography variant="subtitle2">{row.label}</Typography>
-                                </Grid>
-                                <Grid
-                                    size={{
-                                        sm: 6
-                                    }}
-                                    key={row.label}
-                                >
+                                <CardContent>
+                                    <Typography variant="subtitle2">{row.label}:</Typography>
                                     <Typography variant="subtitle2">{row.value}</Typography>
-                                </Grid>
-                            </Grid>
+                                    <Typography variant="subtitle2">{row.explanation}</Typography>
+                                </CardContent>
+                            </Card>
                         ))}
-                    </Stack>
+                    </Grid>
                 ))}
 
 
