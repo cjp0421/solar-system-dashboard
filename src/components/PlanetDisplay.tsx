@@ -24,7 +24,7 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                 >
                     <Card
                         sx={{
-                            width: '50%'
+                            width: '50%',
                         }}
                     >
                         <Skeleton variant="text" role="progressbar" width="20%" height={30} />
@@ -34,7 +34,6 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                     <Card
                         sx={{
                             width: '50%',
-                            height: '100px'
                         }}
                     >
                         <Skeleton variant="text" role="progressbar" width="20%" height={30} />
@@ -44,7 +43,6 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                     <Card
                         sx={{
                             width: '50%',
-                            height: '100px'
                         }}
                     >
                         <Skeleton variant="text" role="progressbar" width="20%" height={30} />
@@ -54,7 +52,6 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                     <Card
                         sx={{
                             width: '50%',
-                            height: '100px'
                         }}
                     >
                         <Skeleton variant="text" role="progressbar" width="20%" height={30} />
@@ -64,7 +61,6 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                     <Card
                         sx={{
                             width: '50%',
-                            height: '100px'
                         }}
                     >
                         <Skeleton variant="text" role="progressbar" width="20%" height={30} />
@@ -74,7 +70,6 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                     <Card
                         sx={{
                             width: '50%',
-                            height: '100px'
                         }}
                     >
                         <Skeleton variant="text" role="progressbar" width="20%" height={30} />
