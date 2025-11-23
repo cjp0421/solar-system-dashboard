@@ -1,4 +1,4 @@
-import { Card, CardContent, Grid, Skeleton, Stack, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Skeleton, Typography } from "@mui/material";
 import { buildMoonFactRows } from "./utils/buildFactRows";
 import type { CelestialBody } from "../types/celestialBody";
 
@@ -18,12 +18,70 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
             </Typography>
 
             {isLoading ? (
-                <Stack spacing={2} sx={{ p: 2 }}>
-                    <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                    <Skeleton variant="text" role="progressbar" width="60%" height={30} />
-                    <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                    <Skeleton variant="text" role="progressbar" width="60%" height={30} />
-                </Stack>
+                <Grid
+                    component="section"
+                    container
+                >
+                    <Card
+                        sx={{
+                            width: '50%'
+                        }}
+                    >
+                        <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                    </Card>
+                    <Card
+                        sx={{
+                            width: '50%',
+                            height: '100px'
+                        }}
+                    >
+                        <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                    </Card>
+                    <Card
+                        sx={{
+                            width: '50%',
+                            height: '100px'
+                        }}
+                    >
+                        <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                    </Card>
+                    <Card
+                        sx={{
+                            width: '50%',
+                            height: '100px'
+                        }}
+                    >
+                        <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                    </Card>
+                    <Card
+                        sx={{
+                            width: '50%',
+                            height: '100px'
+                        }}
+                    >
+                        <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                    </Card>
+                    <Card
+                        sx={{
+                            width: '50%',
+                            height: '100px'
+                        }}
+                    >
+                        <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                        <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                    </Card>
+                </Grid>
             ) : (
                 (isError ? (<p>🚨ERROR🚨</p>) :
                     <Grid
