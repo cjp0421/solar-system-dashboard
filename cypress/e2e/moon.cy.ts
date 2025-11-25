@@ -1,11 +1,15 @@
 describe('Moon', () => {
     beforeEach(() => {
-        cy.visit("/");
+        cy.intercept('GET', '**/proxy*', (req) => {
+            req.on('response', (res) => {
+                res.setDelay(300)
+            });
+            req.reply({ fixture: 'moon.json' })
+        }).as('getMoon');
 
-        cy.window().then((win) => {
-            win.localStorage.setItem("selectedPlanet", "moon");
-        });
+        cy.visit('/');
     });
+
 
     it('displays the hero section and CTA navigation', () => {
         // cy.visit('/');
@@ -35,6 +39,8 @@ describe('Moon', () => {
             cy.get('[role="progressbar"]').should('exist');
         })
 
+        cy.wait('@getMoon')
+
         cy.get('#moon-facts').within(() => {
             cy.contains('Mass').should('be.visible');
             cy.contains('Gravity').should('be.visible');
@@ -49,9 +55,10 @@ describe('Moon', () => {
     })
     // MD - 002 - Success State 
     it('displays Moon data after successful load', () => {
-        cy.intercept('GET', '**/proxy?id=moon', {
-            fixture: 'moon.json',
-        }).as('getMoon');
+        // cy.intercept('GET', '**/proxy?id=moon', {
+        //     fixture: 'moon.json',
+        // }).as('getMoon');
+
 
         // cy.visit('/');
         cy.contains('Go to Moon Data').click();
