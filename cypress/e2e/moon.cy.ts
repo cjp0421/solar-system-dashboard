@@ -1,6 +1,14 @@
 describe('Moon', () => {
+    beforeEach(() => {
+        cy.visit("/");
+
+        cy.window().then((win) => {
+            win.localStorage.setItem("selectedPlanet", "moon");
+        });
+    });
+
     it('displays the hero section and CTA navigation', () => {
-        cy.visit('/');
+        // cy.visit('/');
         cy.get('header').within(() => {
             cy.contains('h6', 'Solar System Dashboard').should('be.visible');
             cy.contains('a', 'About');
@@ -20,7 +28,7 @@ describe('Moon', () => {
     });
     // MD - 001 - Loading State
     it('shows skeleton loaders while data is fetching', () => {
-        cy.visit('/');
+        // cy.visit('/');
         cy.contains('Go to Moon Data').click();
 
         cy.get('#moon-facts').within(() => {
@@ -45,7 +53,7 @@ describe('Moon', () => {
             fixture: 'moon.json',
         }).as('getMoon');
 
-        cy.visit('/');
+        // cy.visit('/');
         cy.contains('Go to Moon Data').click();
 
         cy.wait('@getMoon');
