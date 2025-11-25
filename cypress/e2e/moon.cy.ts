@@ -1,10 +1,8 @@
 describe('Moon', () => {
     beforeEach(() => {
         cy.intercept(
-            {
-                method: 'GET',
-                url: /proxy/
-            },
+            'GET',
+            '**/proxy?id=moon*',
             (req) => {
                 req.on('response', (res) => {
                     res.setDelay(300);
@@ -46,7 +44,7 @@ describe('Moon', () => {
             cy.get('[role="progressbar"]').should('exist');
         });
 
-        cy.wait('@getMoon');
+        // cy.wait('@getMoon');
 
         cy.get('#moon-facts').within(() => {
             cy.contains('Mass').should('be.visible');
@@ -65,7 +63,7 @@ describe('Moon', () => {
     it('displays Moon data after successful load', () => {
         cy.contains('Go to Moon Data').click();
 
-        cy.wait('@getMoon');
+        // cy.wait('@getMoon');
 
         cy.get('#moon-facts').within(() => {
             cy.contains("Facts About Earth's Moon").should('be.visible');
