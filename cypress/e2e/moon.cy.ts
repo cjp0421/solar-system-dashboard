@@ -1,14 +1,21 @@
 describe('Moon', () => {
     beforeEach(() => {
-        cy.intercept('GET', '**/proxy*', (req) => {
-            req.on('response', (res) => {
-                res.setDelay(300)
-            });
-            req.reply({ fixture: 'moon.json' })
-        }).as('getMoon');
+        cy.intercept(
+            {
+                method: 'GET',
+                url: /proxy.*id=moon.*/
+            },
+            (req) => {
+                req.on('response', (res) => {
+                    res.setDelay(300);
+                });
+                req.reply({ fixture: 'moon.json' });
+            }
+        ).as('getMoon');
 
         cy.visit('/');
     });
+
 
 
     it('displays the hero section and CTA navigation', () => {
