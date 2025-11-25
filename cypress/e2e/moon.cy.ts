@@ -20,6 +20,9 @@ describe('Moon', () => {
 
     it('displays the hero section and CTA navigation', () => {
         // cy.visit('/');
+        cy.intercept('GET', '**', (req) => {
+            console.log('🌙 CI FETCH URL:', req.url);
+        }).as('debugAll');
         cy.get('header').within(() => {
             cy.contains('h6', 'Solar System Dashboard').should('be.visible');
             cy.contains('a', 'About');
@@ -40,6 +43,9 @@ describe('Moon', () => {
     // MD - 001 - Loading State
     it('shows skeleton loaders while data is fetching', () => {
         // cy.visit('/');
+        cy.intercept('GET', '**', (req) => {
+            console.log('🌙 CI FETCH URL:', req.url);
+        }).as('debugAll');
         cy.contains('Go to Moon Data').click();
 
         cy.get('#moon-facts').within(() => {
@@ -68,6 +74,9 @@ describe('Moon', () => {
 
 
         // cy.visit('/');
+        cy.intercept('GET', '**', (req) => {
+            console.log('🌙 CI FETCH URL:', req.url);
+        }).as('debugAll');
         cy.contains('Go to Moon Data').click();
 
         cy.wait('@getMoon');
