@@ -18,8 +18,8 @@ describe('Moon', () => {
         cy.get('h3').contains("Facts About Earth's Moon").should('be.visible');
         cy.url().should('include', '#moon-facts');
     });
-    // MD - 001 - Loading Statte
-    it('shows skeletone loaders while data is fetching', () => {
+    // MD - 001 - Loading State
+    it('shows skeleton loaders while data is fetching', () => {
         cy.visit('/');
         cy.contains('Go to Moon Data').click();
 
@@ -38,6 +38,35 @@ describe('Moon', () => {
 
             cy.get('[role="progressbar"]').should('not.exist');
         })
-
     })
+    // MD - 002 - Success State 
+    it('displays Moon data after successful load', () => {
+        cy.intercept('GET', '**/proxy?id=moon', {
+            fixture: 'moon.json',
+        }).as('getMoon');
+
+        cy.visit('/');
+        cy.contains('Go to Moon Data').click();
+
+        cy.wait('@getMoon');
+
+        cy.get('#moon-facts').within(() => {
+            cy.contains("Facts About Earth's Moon").should('be.visible');
+        })
+
+        cy.get('#moon-facts').within(() => {
+            cy.contains('Mass').should('be.visible');
+            cy.contains('Mean Radius').should('be.visible');
+            cy.contains('Gravity').should('be.visible');
+            cy.contains('Density').should('be.visible');
+            cy.contains('Orbital Period').should('be.visible');
+            cy.contains('Rotation Period').should('be.visible');
+            cy.contains('Escape Velocity').should('be.visible');
+
+            cy.get('[role="progressbar"]').should('not.exist');
+        });
+
+        cy.contains('🚨ERROR🚨').should('not.exist');
+    })
+
 })

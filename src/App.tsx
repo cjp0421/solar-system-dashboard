@@ -1,22 +1,18 @@
 import NavBar from "./components/NavBar"
 import Hero from "./components/Hero"
 import PlanetDisplay from "./components/PlanetDisplay"
-import { fetchMoon } from "./api/fake_moon_fetch"
-import { useQuery } from "@tanstack/react-query"
-
+import { useBody } from "./queries/useBody";
 
 function App() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['moon'],
-    queryFn: fetchMoon
-  })
+  const planetID = 'moon';
+  const { data, isLoading, isError, refetch } = useBody(planetID);
   return (
     <>
       <NavBar />
-      <Hero />
+      <Hero refetch={refetch} />
       <PlanetDisplay body={data} isLoading={isLoading} isError={isError} />
     </>
   )
 }
 
-export default App
+export default App;

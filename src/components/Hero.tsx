@@ -1,6 +1,10 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 
-function Hero() {
+type HeroProps = {
+    refetch: () => void;
+}
+
+function Hero({ refetch }: HeroProps) {
     return (
         <Stack
             component="section"
@@ -39,6 +43,7 @@ function Hero() {
                 <Button
                     href="#moon-facts"
                     variant="contained"
+                    onClick={() => refetch()}
                     sx={{
                         mt: 2,
                         backgroundColor: '#000'
