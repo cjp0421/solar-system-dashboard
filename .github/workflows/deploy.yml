@@ -37,8 +37,8 @@ jobs:
         with:
           install: false               
           start: npm run preview       
-          wait-on: "http://localhost:5173/solar-system-dashboard"
-          config: baseUrl=http://localhost:5173/solar-system-dashboard
+          wait-on: "http://localhost:5173/solar-system-dashboard/"
+          config: baseUrl=http://localhost:5173/solar-system-dashboard/
           browser: chrome
 
       - name: Upload Cypress artifacts (on failure)
