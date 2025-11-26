@@ -20,6 +20,8 @@ jobs:
   test:
     name: E2E Tests (Cypress vs Vite Preview)
     runs-on: ubuntu-latest
+    env:
+      VITE_PROXY_URL: "/proxy"
     steps:
       - uses: actions/checkout@v4
 
