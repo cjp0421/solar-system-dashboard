@@ -4,22 +4,19 @@ describe('Moon', () => {
             'GET',
             '**/proxy?id=moon*',
             (req) => {
-                req.on('response', (res) => {
-                    res.setDelay(300);
-                });
                 req.reply({ fixture: 'moon.json' });
             }
         ).as('getMoon');
 
         cy.visit('/');
     });
-    // MD - 001 - Loading State
+
     it('shows skeleton loaders while data is fetching', () => {
         cy.contains('Go to Moon Data').click();
 
-        cy.get('#moon-facts').within(() => {
-            cy.get('[role="progressbar"]').should('exist');
-        });
+        cy.wait(40);
+
+        cy.get('#moon-facts [role="progressbar"]').should('exist');
 
         cy.wait('@getMoon');
 
@@ -36,3 +33,4 @@ describe('Moon', () => {
         });
     });
 });
+
