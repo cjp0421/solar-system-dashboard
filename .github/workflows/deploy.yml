@@ -59,7 +59,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
-      VITE_PROXY_URL: "/proxy"
+      VITE_PROXY_URL: "https://iu7j77g7cg.execute-api.us-east-2.amazonaws.com/prod/proxy"
     steps:
       - uses: actions/checkout@v4
 
