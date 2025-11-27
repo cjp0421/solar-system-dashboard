@@ -4,6 +4,9 @@ describe('Moon', () => {
             'GET',
             '**/proxy?id=moon*',
             (req) => {
+                req.on('response', (res) => {
+                    res.setDelay(300);
+                });
                 req.reply({ fixture: 'moon.json' });
             }
         ).as('getMoon');
