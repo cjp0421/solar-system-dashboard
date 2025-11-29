@@ -80,6 +80,7 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                     </Grid>
                 </section>
             ) : (
+                (isError ? <Typography>Unable to load Moon data. Please try again later.</Typography>
                     : <section id="moon-facts">
                         {
                             body ? <Typography variant="h3" sx={{ fontSize: '1.5rem', p: 2 }}>

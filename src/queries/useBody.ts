@@ -5,6 +5,7 @@ export const useBody = (id: string) => {
     return useQuery({
         queryKey: ['body', id],
         queryFn: () => fetchBody(id),
-        enabled: false
+        enabled: false,
+        retry: false
     })
 }
