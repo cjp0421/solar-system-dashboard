@@ -10,11 +10,10 @@ describe('Moon', () => {
                 req.reply({ fixture: 'moon.json' });
             }
         ).as('getMoon');
-
-        cy.visit('/');
     });
 
     it('displays the hero section and CTA navigation', () => {
+        cy.visit('/');
         cy.get('header').within(() => {
             cy.contains('h6', 'Solar System Dashboard').should('be.visible');
             cy.contains('a', 'About');
@@ -22,6 +21,7 @@ describe('Moon', () => {
 
         cy.get('h1').contains("Learn More").should('be.visible');
         cy.get('h2').contains("About Earth's Moon").should('be.visible');
+        cy.contains("Facts About Earth's Moon").should('not.exist');
 
         cy.get('img')
             .should(
@@ -33,10 +33,11 @@ describe('Moon', () => {
         cy.contains('Go to Moon Data').click();
         cy.get("#moon-facts").scrollIntoView();
 
-        cy.contains("Facts About Earth's Moon").should('be.visible');
+        cy.get('h3').contains("Facts About Earth's Moon").should('be.visible');
         cy.url().should('include', '#moon-facts');
     });
     it('shows skeleton loaders while data is fetching', () => {
+        cy.visit('/');
         cy.contains('Go to Moon Data').click();
 
         cy.get('#moon-facts [role="progressbar"]', { timeout: 10000 })
@@ -56,6 +57,7 @@ describe('Moon', () => {
         });
     });
     it('displays Moon data after successful load', () => {
+        cy.visit('/');
         cy.contains('Go to Moon Data').click();
 
         cy.wait('@getMoon');
