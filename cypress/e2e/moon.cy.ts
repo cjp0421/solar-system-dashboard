@@ -108,4 +108,32 @@ describe('Moon', () => {
         cy.contains('Rotation Period').should('not.exist');
         cy.contains('Escape Velocity').should('not.exist');
     });
+    it('allows retries after an API error', () => {
+        cy.intercept(
+            'GET',
+            '**/proxy?id=moon*',
+            { statusCode: 500, body: { message: 'fail' } }
+        ).as('failMoon');
+
+        cy.visit('/');
+
+        cy.contains('Go to Moon Data').click();
+        cy.wait('@failMoon');
+
+        cy.contains('Unable to load Moon data').should('be.visible');
+
+        cy.intercept(
+            'GET',
+            '**/proxy?id=moon*',
+            { fixture: 'moon.json' }
+        ).as('successMoon');
+
+        cy.contains('Go to Moon Data').click();
+
+        cy.wait('@successMoon')
+
+        cy.contains("Facts About Earth's Moon").should('be.visible');
+        cy.contains('Mass').should('be.visible');
+        cy.get('#moon-facts [role="progressbar"]').should('not.exist');
+    });
 });
