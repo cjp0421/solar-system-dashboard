@@ -1,4 +1,4 @@
-import NavBar from "./components/NavBar"
+import NavBar from "./components/navBar/NavBar"
 import Hero from "./components/Hero"
 import PlanetDisplay from "./components/PlanetDisplay"
 import { useBody } from "./queries/useBody";

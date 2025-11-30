@@ -1,8 +1,13 @@
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import './NavBar.css'
 
 function NavBar() {
     return (
         <header>
+            <a href="#moon-cta" className="skip-link">
+                Skip to Moon data
+            </a>
+
             <AppBar component="nav">
                 <Toolbar
                     sx={{

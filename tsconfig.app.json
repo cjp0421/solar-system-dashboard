@@ -30,7 +30,7 @@
   },
   "include": [
     "src",
-    "src/components/NavBar.tsx",
+    "src/components/navBar/NavBar.tsx",
     "src/components/Hero.tsx",
     "src/components/PlanetDisplay.tsx"
   ]

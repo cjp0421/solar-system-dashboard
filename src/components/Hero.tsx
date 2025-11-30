@@ -41,6 +41,7 @@ function Hero({ refetch }: HeroProps) {
                     About Earth's Moon
                 </Typography>
                 <Button
+                    id="moon-cta"
                     href="#moon-facts"
                     variant="contained"
                     onClick={() => refetch()}

@@ -136,7 +136,7 @@ describe('Moon', () => {
         cy.contains('Mass').should('be.visible');
         cy.get('#moon-facts [role="progressbar"]').should('not.exist');
     });
-    // the test below is intended to practice the process of accessibility testing
+    // Accessibility: this test is intended to do a basic accessibility check
     it('supports basic accessibility via semantic landmarks, headings, loading state, and error announcements', () => {
         cy.visit('/');
         // LANDMARKS
@@ -169,6 +169,17 @@ describe('Moon', () => {
         // ACCESSIBLE ERROR MESSAGE - smoke check, not full flow
         cy.get('body')
             .should('not.contain.text', 'Unable to load Moon data')
+    });
+    // Accessibility: this test is inttended to practice using 
+    it('allows keyboard/screen reader users to skip navigation and jump to the Moon Data CTA', () => {
+        cy.visit('/');
 
+        cy.contains('Skip to Moon data').focus();
+
+        cy.contains('Skip to Moon data').click();
+
+        cy.focused().should('have.attr', 'id', 'moon-cta');
+
+        cy.url().should('include', '#moon-cta')
     })
 });
