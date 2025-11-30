@@ -66,17 +66,23 @@ All images saved in:
 
 ## 5. Test Cases
 
-### NAV-001 – Landing Page renders global layout and navigation options
+### NAV-001 – Landing Page renders global layout and shows Solar System categories
 **Steps**
 1. Visit `/`
 2. Assert NavBar is visible.
-3. Assert app title (“Solar System Dashboard”) is visible.
-4. Assert Landing Page heading or intro text exists.
-5. Assert a visible, accessible **“Moon”** navigation element is present.
-6. Assert no Moon data or Moon UI appears on this page.
+3. Assert app title **“Solar System Dashboard”** is visible in the NavBar.
+4. Assert the page heading **“Welcome to the Solar System”** is visible.
+5. Assert the **Moons** section heading is visible.
+6. Assert the **Planets** section heading is visible.
+7. Assert placeholder card items exist under each section (e.g., list items or skeletons).
+8. Assert **no Moon page content** appears on this page:
+   - No Moon hero
+   - No Moon facts heading
+   - No Moon data values
+   - No Moon-specific layout
 
 **Expected Result**  
-The Landing Page displays global layout and navigation options without showing Moon content.
+The Landing Page shows the global layout and Solar-System-wide navigation categories, but does not render Moon slice UI.
 
 ---
 
@@ -104,21 +110,23 @@ User successfully navigates to the Moon page using client-side routing.
 4. Assert Landing Page content is visible.
 
 **Expected Result**  
-NavBar supports global navigation back to the Landing Page.
+Global navigation correctly returns the user to the Landing Page.
 
 ---
 
-### NAV-004 – Invalid routes show Not Found UI
+### NAV-004 – Invalid routes show 404 page with global layout
 **Steps**
-1. Visit `/does-not-exist`
-2. Assert a “Not Found” or equivalent error UI is visible.
-3. Assert NavBar remains visible.
-4. Assert a button or link allows returning to `/`.
-5. Click the return link.
-6. Assert Landing Page is shown.
+1. Visit `/does-not-exist`.
+2. Assert the NavBar is visible.
+3. Assert the app title **“Solar System Dashboard”** is visible.
+4. Assert **“404”** is visible.
+5. Assert **“Page not found.”** is visible.
+6. Assert footer links are visible (GitHub, LinkedIn, Portfolio).
+7. Click the **Home** link in the NavBar.
+8. Assert Landing Page appears.
 
 **Expected Result**  
-Invalid routes return a user-friendly fallback page with navigation recovery.
+The 404 page displays the correct UI based on the wireframe and allows navigation back home through global layout.
 
 ---
 
