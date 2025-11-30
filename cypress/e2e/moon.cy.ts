@@ -136,4 +136,39 @@ describe('Moon', () => {
         cy.contains('Mass').should('be.visible');
         cy.get('#moon-facts [role="progressbar"]').should('not.exist');
     });
+    // the test below is intended to practice the process of accessibility testing
+    it('supports basic accessibility via semantic landmarks, headings, loading state, and error announcements', () => {
+        cy.visit('/');
+        // LANDMARKS
+        cy.get('main').should('exist');
+        cy.get('header').should('exist');
+
+        // HEADING STRUCTURE
+        cy.get('h1')
+            .should('be.visible')
+            .and('contain.text', "Learn More");
+
+        cy.get('h2')
+            .should('be.visible')
+            .and('contain.text', "About Earth's Moon");
+
+        // ACCESSIBLE LOADING STATE
+        cy.contains('Go to Moon Data').click();
+
+        cy.get('#moon-facts [role="progressbar"').should('exist');
+
+        cy.wait('@getMoon');
+
+        cy.get('#moon-facts [role="progressbar"]').should('not.exist');
+
+        // ACCESSIBLE CONTENT REGION
+        cy.get('#moon-facts')
+            .find('h3')
+            .should('contain.text', "Facts About Earth's Moon");
+
+        // ACCESSIBLE ERROR MESSAGE - smoke check, not full flow
+        cy.get('body')
+            .should('not.contain.text', 'Unable to load Moon data')
+
+    })
 });

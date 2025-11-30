@@ -9,8 +9,10 @@ function App() {
   return (
     <>
       <NavBar />
-      <Hero refetch={refetch} />
-      <PlanetDisplay body={data} isLoading={isLoading} isError={isError} />
+      <main>
+        <Hero refetch={refetch} />
+        <PlanetDisplay body={data} isLoading={isLoading} isError={isError} />
+      </main>
     </>
   )
 }
