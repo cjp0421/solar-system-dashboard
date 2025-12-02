@@ -14,8 +14,6 @@ describe('Navigation, Landing Page, and Global Layout', () => {
         cy.findByRole('heading', { name: /moons/i }).should('be.visible');
         cy.findByRole('heading', { name: /planets/i }).should('be.visible');
 
-        cy.findByRole('contentinfo').should('be.visible');
-
         cy.findByRole('contentinfo')
             .findByRole('link', { name: /github/i })
             .should('be.visible');
@@ -53,5 +51,41 @@ describe('Navigation, Landing Page, and Global Layout', () => {
             .contains('Welcome to the Solar System')
             .should('be.visible');
 
+    });
+    it('navigates to the NotFoundPage inside the global layout', () => {
+        cy.visit('/does-not-exist');
+        cy.findByRole('navigation')
+            .findByRole('link', { name: /solar system dashboard/i })
+            .should('be.visible');
+
+        cy.findByRole('contentinfo')
+            .findByRole('link', { name: /github/i })
+            .should('be.visible');
+
+        cy.findByRole('contentinfo')
+            .findByRole('link', { name: /linkedin/i })
+            .should('be.visible');
+
+        cy.findByRole('contentinfo')
+            .findByRole('link', { name: /portfolio/i })
+            .should('be.visible');
+
+        cy.findByRole('contentinfo')
+            .findAllByText(/©/i)
+            .should('be.visible');
+
+        cy.findByRole('heading', { name: /404/i })
+            .should('be.visible');
+
+        cy.get('h2').contains('Page not found.');
+        cy.findByRole('heading', { name: /Page not found./i })
+            .should('be.visible');
+
+        cy.findByRole('navigation')
+            .findByRole('link', { name: /solar system dashboard/i })
+            .click();
+
+        cy.findByRole('heading', { name: /welcome to the solar system/i })
+            .should('be.visible');
     });
 })
