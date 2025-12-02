@@ -1,35 +1,77 @@
-import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
+import { Typography, Grid, Card, CardContent } from "@mui/material";
+import SolarSystemAnimation from "../components/solarSystemAnimation/SolarSystemAnimation";
 
 export default function LandingPage() {
     return (
-        <Box sx={{ p: 4 }}>
-
-            <Typography variant="h3" component="h1" gutterBottom>
-                Welcome to the Solar System
-            </Typography>
-
-            <Box sx={{ mt: 4 }}>
+        <Grid
+            container
+            spacing={2}
+            sx={{
+                mt: 12,
+                mb: 2,
+                mx: 1,
+                minHeight: '80vh',
+                justifyContent: 'center',
+                alignContent: 'center'
+            }}
+        >
+            <Grid
+                size={{ xs: 12, md: 4 }}
+                sx={{
+                    mt: 4,
+                    textAlign: 'center',
+                    justifyContent: 'center'
+                }}
+            >
                 <Typography variant="h4" component="h2" gutterBottom>
                     Moons
                 </Typography>
 
                 <Grid container spacing={2}>
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <Card>
                             <CardContent>
-                                <Typography variant="body1">Moon</Typography>
+                                <Typography variant="body1">Earth's Moon</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4 }}>
+                        <Card>
+                            <CardContent>
+                                <Typography variant="body1">Earth's Moon</Typography>
                             </CardContent>
                         </Card>
                     </Grid>
                 </Grid>
-            </Box>
-            <Box sx={{ mt: 6 }}>
+            </Grid>
+            <Grid
+                size={{ xs: 12, md: 4 }}
+                sx={{
+                    textAlign: 'center',
+                }}
+            >
+                <Grid>
+                    <Typography variant="h3" component="h1" gutterBottom>
+                        Welcome to the Solar System
+                    </Typography>
+                </Grid>
+                <Grid>
+                    <SolarSystemAnimation />
+                </Grid>
+            </Grid>
+            <Grid
+                size={{ xs: 12, md: 4 }}
+                sx={{
+                    mt: 4,
+                    textAlign: 'center',
+                }}
+            >
                 <Typography variant="h4" component="h2" gutterBottom>
                     Planets
                 </Typography>
 
                 <Grid container spacing={2}>
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <Card>
                             <CardContent>
                                 <Typography variant="body1">Earth</Typography>
@@ -37,7 +79,21 @@ export default function LandingPage() {
                         </Card>
                     </Grid>
 
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                    <Grid size={{ xs: 12, md: 4 }}>
+                        <Card>
+                            <CardContent>
+                                <Typography variant="body1">Mars</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4 }}>
+                        <Card>
+                            <CardContent>
+                                <Typography variant="body1">Mars</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <Card>
                             <CardContent>
                                 <Typography variant="body1">Mars</Typography>
@@ -45,8 +101,7 @@ export default function LandingPage() {
                         </Card>
                     </Grid>
                 </Grid>
-            </Box>
-
-        </Box>
+            </Grid>
+        </Grid>
     );
 }
