@@ -101,7 +101,6 @@ User successfully navigates to the Moon page using client-side routing.
 ---
 
 ### NAV-003 – NavBar title returns user home
-*(Optional if this feature is implemented)*
 
 **Steps**
 1. Visit `/moon`
