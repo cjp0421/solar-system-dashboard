@@ -21,6 +21,8 @@ function NavBar() {
                         variant="h6"
                         sx={{
                             flexGrow: 1,
+                            color: '#fff',
+                            textDecoration: 'none',
                         }}
                     >
                         Solar System Dashboard
