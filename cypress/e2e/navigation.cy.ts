@@ -1,4 +1,4 @@
-describe('Navigation and Landing Page', () => {
+describe('Navigation, Landing Page, and Global Layout', () => {
     it('dislays the landing page which renders the global layout and solar system categories', () => {
         cy.visit('/')
 
@@ -42,5 +42,16 @@ describe('Navigation and Landing Page', () => {
         cy.findByRole('navigation')
             .findByRole('link', { name: /solar system dashboard/i })
             .should('be.visible');
+    });
+    it('navigates to the Landing Page when the NavBar title is clicked', () => {
+        cy.visit('/moon');
+
+        cy.findByRole('navigation')
+            .findByRole('link', { name: /solar system dashboard/i })
+            .click();
+        cy.get('h1')
+            .contains('Welcome to the Solar System')
+            .should('be.visible');
+
     });
 })
