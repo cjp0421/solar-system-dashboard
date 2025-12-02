@@ -24,7 +24,13 @@ export default function LandingPage() {
                     justifyContent: 'center'
                 }}
             >
-                <Typography variant="h4" component="h2" gutterBottom>
+                <Typography
+                    variant="h4"
+                    component="h2"
+                    gutterBottom
+                    sx={{
+                        mt: 7
+                    }}>
                     Moons
                 </Typography>
 
@@ -35,14 +41,24 @@ export default function LandingPage() {
                         mx: 1.5
                     }}
                 >
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid
+                        size={{ xs: 12, md: 4 }}
+                        sx={{
+                            mt: .5
+                        }}
+                    >
                         <Card>
                             <CardContent>
                                 <Typography variant="body1">Earth's Moon</Typography>
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid
+                        size={{ xs: 12, md: 4 }}
+                        sx={{
+                            mt: .5
+                        }}
+                    >
                         <Card>
                             <CardContent>
                                 <Typography variant="body1">Io</Typography>
@@ -63,7 +79,11 @@ export default function LandingPage() {
                         Welcome to the Solar System
                     </Typography>
                 </Grid>
-                <Grid>
+                <Grid
+                    sx={{
+                        mt: 5
+                    }}
+                >
                     <SolarSystemAnimation />
                 </Grid>
             </Grid>
@@ -75,7 +95,14 @@ export default function LandingPage() {
                     textAlign: 'center',
                 }}
             >
-                <Typography variant="h4" component="h2" gutterBottom>
+                <Typography
+                    variant="h4"
+                    component="h2"
+                    gutterBottom
+                    sx={{
+                        mt: 7
+                    }}
+                >
                     Planets
                 </Typography>
 
@@ -86,7 +113,12 @@ export default function LandingPage() {
                         mx: 1.5
                     }}
                 >
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid
+                        size={{ xs: 12, md: 4 }}
+                        sx={{
+                            mt: .5
+                        }}
+                    >
                         <Card>
                             <CardContent>
                                 <Typography variant="body1">Earth</Typography>
@@ -94,21 +126,36 @@ export default function LandingPage() {
                         </Card>
                     </Grid>
 
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid
+                        size={{ xs: 12, md: 4 }}
+                        sx={{
+                            mt: .5
+                        }}
+                    >
                         <Card>
                             <CardContent>
                                 <Typography variant="body1">Mars</Typography>
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid
+                        size={{ xs: 12, md: 4 }}
+                        sx={{
+                            mt: .5
+                        }}
+                    >
                         <Card>
                             <CardContent>
                                 <Typography variant="body1">Mercury</Typography>
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 4 }}>
+                    <Grid
+                        size={{ xs: 12, md: 4 }}
+                        sx={{
+                            mt: .5
+                        }}
+                    >
                         <Card>
                             <CardContent>
                                 <Typography variant="body1">Jupiter</Typography>
