@@ -10,6 +10,7 @@ type CelestialNavItem = {
 const moons: CelestialNavItem[] = [
     { label: "Earth's Moon", to: "/solar-system-dashboard/moon" },
     { label: "Io", to: "/solar-system-dashboard/io" },
+    { label: "Phobos" }
 ];
 
 const planets: CelestialNavItem[] = [
@@ -34,7 +35,7 @@ export default function LandingPage() {
             }}
         >
             <Grid
-                size={{ xs: 12, md: 4 }}
+                size={{ xs: 10, md: 4 }}
                 order={{ xs: 2, md: 1 }}
                 sx={{
                     mt: 4,
@@ -54,9 +55,10 @@ export default function LandingPage() {
 
                 <Grid
                     container
-                    spacing={2}
+                    spacing={4}
                     sx={{
-                        mx: 1.5
+                        mx: 1.5,
+                        justifyContent: 'space-evenly'
                     }}
                 >
                     {moons.map((moon) => (
@@ -87,7 +89,7 @@ export default function LandingPage() {
                 </Grid>
             </Grid>
             <Grid
-                size={{ xs: 12, md: 4 }}
+                size={{ xs: 10, md: 4 }}
                 order={{ xs: 3, md: 3 }}
                 sx={{
                     mt: 4,
@@ -107,7 +109,7 @@ export default function LandingPage() {
 
                 <Grid
                     container
-                    spacing={2}
+                    spacing={4}
                     sx={{
                         mx: 1.5
                     }}

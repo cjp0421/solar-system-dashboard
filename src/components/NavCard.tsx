@@ -11,7 +11,8 @@ export function NavCard({ label, to }: NavCardProps) {
         <Card
             sx={{
                 boxShadow: 10,
-                minHeight: '80px',
+                aspectRatio: '1 / 1',
+                borderRadius: '50%'
             }}
         >
             <CardActionArea
@@ -19,7 +20,7 @@ export function NavCard({ label, to }: NavCardProps) {
                 to={to}
                 sx={{
                     alignContent: 'center',
-                    minHeight: '80px',
+                    aspectRatio: '1 / 1',
                     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                     '&:hover': {
                         transform: 'scale(1.03)',
