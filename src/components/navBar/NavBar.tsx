@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import './NavBar.css'
+import { Link } from "react-router-dom";
 
 function NavBar() {
     return (
@@ -15,6 +16,8 @@ function NavBar() {
                     }}
                 >
                     <Typography
+                        component={Link}
+                        to='/solar-system-dashboard/'
                         variant="h6"
                         sx={{
                             flexGrow: 1,

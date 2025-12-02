@@ -4,8 +4,7 @@
     "composite": true,
     "types": [
       "cypress",
-      // "node",
-      // "mocha"
+      "@testing-library/cypress",
     ],
     "noEmit": true,
     "isolatedModules": false
