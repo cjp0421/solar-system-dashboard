@@ -1,6 +1,23 @@
-import { Typography, Grid, Card, CardContent, CardActionArea } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import SolarSystemAnimation from "../components/solarSystemAnimation/SolarSystemAnimation";
-import { Link } from "react-router-dom";
+import { NavCard } from "../components/NavCard";
+
+type CelestialNavItem = {
+    label: string;
+    to?: string;
+}
+
+const moons: CelestialNavItem[] = [
+    { label: "Earth's Moon", to: "/solar-system-dashboard/moon" },
+    { label: "Io", to: "/solar-system-dashboard/io" },
+];
+
+const planets: CelestialNavItem[] = [
+    { label: "Earth" },
+    { label: "Mars" },
+    { label: "Mercury" },
+    { label: "Jupiter" },
+];
 
 export default function LandingPage() {
     return (
@@ -42,38 +59,11 @@ export default function LandingPage() {
                         mx: 1.5
                     }}
                 >
-                    <Grid
-                        size={{ xs: 12, md: 4 }}
-                        sx={{
-                            mt: .5
-                        }}
-                    >
-                        <Card>
-                            <CardActionArea
-                                component={Link}
-                                to='/solar-system-dashboard/moon'
-                                sx={{
-                                    height: '100%'
-                                }}
-                            >
-                                <CardContent>
-                                    <Typography variant="body1">Earth's Moon</Typography>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
-                    </Grid>
-                    <Grid
-                        size={{ xs: 12, md: 4 }}
-                        sx={{
-                            mt: .5
-                        }}
-                    >
-                        <Card>
-                            <CardContent>
-                                <Typography variant="body1">Io</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
+                    {moons.map((moon) => (
+                        <Grid key={moon.label} size={{ xs: 12, md: 4 }} sx={{ mt: 0.5 }}>
+                            <NavCard label={moon.label} to={moon.to} />
+                        </Grid>
+                    ))}
                 </Grid>
             </Grid>
             <Grid
@@ -122,57 +112,13 @@ export default function LandingPage() {
                         mx: 1.5
                     }}
                 >
-                    <Grid
-                        size={{ xs: 12, md: 4 }}
-                        sx={{
-                            mt: .5
-                        }}
-                    >
-                        <Card>
-                            <CardContent>
-                                <Typography variant="body1">Earth</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-
-                    <Grid
-                        size={{ xs: 12, md: 4 }}
-                        sx={{
-                            mt: .5
-                        }}
-                    >
-                        <Card>
-                            <CardContent>
-                                <Typography variant="body1">Mars</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid
-                        size={{ xs: 12, md: 4 }}
-                        sx={{
-                            mt: .5
-                        }}
-                    >
-                        <Card>
-                            <CardContent>
-                                <Typography variant="body1">Mercury</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid
-                        size={{ xs: 12, md: 4 }}
-                        sx={{
-                            mt: .5
-                        }}
-                    >
-                        <Card>
-                            <CardContent>
-                                <Typography variant="body1">Jupiter</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
+                    {planets.map((planet) => (
+                        <Grid key={planet.label} size={{ xs: 12, md: 4 }} sx={{ mt: 0.5 }}>
+                            <NavCard label={planet.label} />
+                        </Grid>
+                    ))}
                 </Grid>
             </Grid>
-        </Grid>
+        </Grid >
     );
 }
