@@ -31,5 +31,16 @@ describe('Navigation and Landing Page', () => {
         cy.findByRole('contentinfo')
             .findAllByText(/©/i)
             .should('be.visible');
-    })
+    });
+    it('navigates to Moon Page via card click', () => {
+        cy.visit('/');
+        cy.contains("Earth's Moon").click();
+
+        cy.url().should('include', '/moon');
+        cy.get('h1').contains("Learn More").should('be.visible');
+
+        cy.findByRole('navigation')
+            .findByRole('link', { name: /solar system dashboard/i })
+            .should('be.visible');
+    });
 })

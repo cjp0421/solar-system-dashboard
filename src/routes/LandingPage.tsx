@@ -1,5 +1,6 @@
-import { Typography, Grid, Card, CardContent } from "@mui/material";
+import { Typography, Grid, Card, CardContent, CardActionArea } from "@mui/material";
 import SolarSystemAnimation from "../components/solarSystemAnimation/SolarSystemAnimation";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
     return (
@@ -48,9 +49,17 @@ export default function LandingPage() {
                         }}
                     >
                         <Card>
-                            <CardContent>
-                                <Typography variant="body1">Earth's Moon</Typography>
-                            </CardContent>
+                            <CardActionArea
+                                component={Link}
+                                to='/solar-system-dashboard/moon'
+                                sx={{
+                                    height: '100%'
+                                }}
+                            >
+                                <CardContent>
+                                    <Typography variant="body1">Earth's Moon</Typography>
+                                </CardContent>
+                            </CardActionArea>
                         </Card>
                     </Grid>
                     <Grid
