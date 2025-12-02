@@ -13,9 +13,9 @@ describe('Moon', () => {
     });
 
     it('displays the hero section and CTA navigation', () => {
-        cy.visit('/');
+        cy.visit('/moon');
         cy.get('header').within(() => {
-            cy.contains('h6', 'Solar System Dashboard').should('be.visible');
+            cy.contains('Solar System Dashboard').should('be.visible');
             cy.contains('a', 'About');
         })
 
@@ -37,7 +37,7 @@ describe('Moon', () => {
         cy.url().should('include', '#moon-facts');
     });
     it('shows skeleton loaders while data is fetching', () => {
-        cy.visit('/');
+        cy.visit('/moon');
         cy.contains('Go to Moon Data').click();
 
         cy.get('#moon-facts [role="progressbar"]', { timeout: 10000 })
@@ -57,7 +57,7 @@ describe('Moon', () => {
         });
     });
     it('displays Moon data after successful load', () => {
-        cy.visit('/');
+        cy.visit('/moon');
         cy.contains('Go to Moon Data').click();
 
         cy.wait('@getMoon');
@@ -90,7 +90,7 @@ describe('Moon', () => {
             }
         ).as('getMoonError');
 
-        cy.visit('/');
+        cy.visit('/moon');
 
         cy.contains('Go to Moon Data').click();
 
@@ -115,7 +115,7 @@ describe('Moon', () => {
             { statusCode: 500, body: { message: 'fail' } }
         ).as('failMoon');
 
-        cy.visit('/');
+        cy.visit('/moon');
 
         cy.contains('Go to Moon Data').click();
         cy.wait('@failMoon');
@@ -138,7 +138,7 @@ describe('Moon', () => {
     });
     // Accessibility: this test is intended to do a basic accessibility check
     it('supports basic accessibility via semantic landmarks, headings, loading state, and error announcements', () => {
-        cy.visit('/');
+        cy.visit('/moon');
         // LANDMARKS
         cy.get('main').should('exist');
         cy.get('header').should('exist');
@@ -172,7 +172,7 @@ describe('Moon', () => {
     });
     // Accessibility: this test is inttended to practice using 
     it('allows keyboard/screen reader users to skip navigation and jump to the Moon Data CTA', () => {
-        cy.visit('/');
+        cy.visit('/moon');
 
         cy.contains('Skip to Moon data').focus();
 
