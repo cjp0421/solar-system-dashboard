@@ -1,4 +1,6 @@
 ### References & Sources
+- [The Solar System OpenData](https://api.le-systeme-solaire.net/en/)
+  - [`/bodies` Swagger](https://api.le-systeme-solaire.net/swagger/#/bodies/get_bodies__id_)
 - [Tiny PNG](https://tinypng.com/)
 - [The Solar System in CSS](https://dev.to/madsstoumann/the-solar-system-in-css-51bo)
   - [CSS Solar System](https://codepen.io/stoumann/pen/XWLqvgN)
