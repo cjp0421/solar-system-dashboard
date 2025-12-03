@@ -12,7 +12,7 @@ function Hero({ refetch }: HeroProps) {
             sx={{
                 mt: 12,
                 mb: 3,
-                minHeight: '80vh',
+                minHeight: '60vh',
             }}>
             <Box
                 sx={{

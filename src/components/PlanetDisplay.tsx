@@ -13,91 +13,53 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
 
     return (
         <>
-            {isLoading ? (
-                <section id="moon-facts">
-
-                    {body || isLoading ? <Typography variant="h3" sx={{ fontSize: '1.5rem', p: 2 }}>
-                        Facts About Earth's Moon
-                    </Typography> : null}
-                    <Grid
-                        component="section"
-                        container
-                    >
-                        <Card
-                            sx={{
-                                width: '50%',
-                            }}
-                        >
-                            <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                        </Card>
-                        <Card
-                            sx={{
-                                width: '50%',
-                            }}
-                        >
-                            <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                        </Card>
-                        <Card
-                            sx={{
-                                width: '50%',
-                            }}
-                        >
-                            <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                        </Card>
-                        <Card
-                            sx={{
-                                width: '50%',
-                            }}
-                        >
-                            <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                        </Card>
-                        <Card
-                            sx={{
-                                width: '50%',
-                            }}
-                        >
-                            <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                        </Card>
-                        <Card
-                            sx={{
-                                width: '50%',
-                            }}
-                        >
-                            <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                        </Card>
-                    </Grid>
-                </section>
-            ) : (
-                (isError ? <Typography>Unable to load Moon data. Please try again later.</Typography>
-                    : <section id="moon-facts">
-                        {
-                            body ? <Typography variant="h3" sx={{ fontSize: '1.5rem', p: 2 }}>
+            <section id="moon-facts">
+                {isLoading ? (
+                    <>
+                        {(body || isLoading) ? (
+                            <Typography variant="h3" sx={{ fontSize: "1.5rem", p: 2 }}>
                                 Facts About Earth's Moon
-                            </Typography> : null
-                        }
-                        <Grid
-                            component="section"
-                            container
-                        >
+                            </Typography>
+                        ) : null}
+
+                        <Grid component="section" container>
+                            <Card sx={{ width: "50%" }}>
+                                <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                            </Card>
+                            <Card sx={{ width: "50%" }}>
+                                <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                            </Card>
+                            <Card sx={{ width: "50%" }}>
+                                <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                            </Card>
+                            <Card sx={{ width: "50%" }}>
+                                <Skeleton variant="text" role="progressbar" width="20%" height={30} />
+                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
+                            </Card>
+                        </Grid>
+                    </>
+                ) : isError ? (
+                    <Typography>
+                        Unable to load Moon data. Please try again later.
+                    </Typography>
+                ) : (
+                    <>
+                        {body ? (
+                            <Typography variant="h3" sx={{ fontSize: "1.5rem", p: 2 }}>
+                                Facts About Earth's Moon
+                            </Typography>
+                        ) : null}
+
+                        <Grid component="section" container>
                             {rows.map((row) => (
-                                <Card
-                                    key={row.label}
-                                    sx={{
-                                        width: '50%'
-                                    }}
-                                >
+                                <Card key={row.label} sx={{ width: "50%" }}>
                                     <CardContent>
                                         <Typography variant="subtitle2">{row.label}:</Typography>
                                         <Typography variant="subtitle2">{row.value}</Typography>
@@ -106,8 +68,10 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                                 </Card>
                             ))}
                         </Grid>
-                    </section>
-                ))}
+                    </>
+                )}
+            </section>
+
         </ >
     )
 }
