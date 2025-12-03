@@ -40,11 +40,14 @@ describe('Moon', () => {
         cy.visit('/moon');
         cy.contains('Go to Moon Data').click();
 
+
         cy.get('#moon-facts [role="progressbar"]', { timeout: 10000 })
             .should('exist');
 
         cy.get('#moon-facts [role="progressbar"]', { timeout: 10000 })
             .should('not.exist');
+
+        cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
         cy.get('#moon-facts').within(() => {
             cy.contains('Mass', { timeout: 10000 }).should('be.visible');
@@ -61,6 +64,8 @@ describe('Moon', () => {
         cy.contains('Go to Moon Data').click();
 
         cy.wait('@getMoon');
+
+        cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
         cy.get('#moon-facts').within(() => {
             cy.contains("Facts About Earth's Moon").should('be.visible');
