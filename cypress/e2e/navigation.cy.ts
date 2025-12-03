@@ -108,7 +108,9 @@ describe('Navigation, Landing Page, and Global Layout', () => {
         cy.contains("Go to Moon Data").click();
         cy.get("#moon-facts").should("exist");
 
-        cy.get("main").scrollTo("bottom");
+        cy.get("#moon-facts [role='progressbar']").should("not.exist");
+
+        cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
         cy.findByRole("contentinfo").then(($footer) => {
             const rect = $footer[0].getBoundingClientRect();
