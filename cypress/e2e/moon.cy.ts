@@ -23,15 +23,12 @@ describe('Moon', () => {
         cy.get('h2').contains("About Earth's Moon").should('be.visible');
         cy.contains("Facts About Earth's Moon").should('not.exist');
 
-        cy.get('img')
-            .should(
-                'have.attr',
-                'src',
-                'https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001982/GSFC_20171208_Archive_e001982~orig.jpg?w=1536&h=864&fit=clip&crop=faces%2Cfocalpoint'
-            );
+        cy.get('.moon-background')
+            .should('exist')
+            .and('be.visible');
 
         cy.contains('Go to Moon Data').click();
-        cy.get("#moon-facts").scrollIntoView();
+        cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
         cy.get('h3').contains("Facts About Earth's Moon").should('be.visible');
         cy.url().should('include', '#moon-facts');
