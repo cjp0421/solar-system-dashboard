@@ -1,6 +1,7 @@
-import { Card, CardContent, Grid, Skeleton, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { buildMoonFactRows } from "./utils/buildFactRows";
 import type { CelestialBody } from "../types/celestialBody";
+import PlanetDisplaySkeleton from "./PlanetDisplaySkeleton";
 
 type MoonFactsProps = {
     body: CelestialBody | undefined;
@@ -21,29 +22,7 @@ function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
                                 Facts About Earth's Moon
                             </Typography>
                         ) : null}
-
-                        <Grid component="section" container>
-                            <Card sx={{ width: "50%" }}>
-                                <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            </Card>
-                            <Card sx={{ width: "50%" }}>
-                                <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            </Card>
-                            <Card sx={{ width: "50%" }}>
-                                <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            </Card>
-                            <Card sx={{ width: "50%" }}>
-                                <Skeleton variant="text" role="progressbar" width="20%" height={30} />
-                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                                <Skeleton variant="text" role="progressbar" width="40%" height={30} />
-                            </Card>
-                        </Grid>
+                        <PlanetDisplaySkeleton />
                     </>
                 ) : isError ? (
                     <Typography>
