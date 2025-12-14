@@ -1,10 +1,12 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import MoonAnimation from "./moonAnimation/MoonAnimation";
+import type { CelstialBodyConfig } from "../types/celestialBodyConfig";
+
 type HeroProps = {
     refetch: () => void;
+    CelstialBodyConfig?: CelstialBodyConfig;
 }
 
-function Hero({ refetch }: HeroProps) {
+function Hero({ refetch, CelstialBodyConfig }: HeroProps) {
     return (
         <Grid
             component="section"
@@ -19,19 +21,19 @@ function Hero({ refetch }: HeroProps) {
         >
             <Grid size={{ xs: 12, md: 6 }} sx={{ textAlign: "center" }}>
                 <Typography variant="h1" sx={{ fontSize: '3rem' }}>
-                    Learn More
+                    {CelstialBodyConfig?.title}
                 </Typography>
                 <Typography variant="h2" sx={{ fontSize: '3rem' }}>
-                    About Earth's Moon
+                    {CelstialBodyConfig?.subtitle}
                 </Typography>
                 <Button
-                    id="moon-cta"
-                    href="#moon-facts"
+                    id={"hero-cta"}
+                    href={CelstialBodyConfig?.ctaTarget}
                     variant="contained"
                     onClick={refetch}
                     sx={{ mt: 2, backgroundColor: '#000' }}
                 >
-                    Go to Moon Data
+                    {CelstialBodyConfig?.ctaLabel}
                 </Button>
             </Grid>
 
@@ -54,7 +56,7 @@ function Hero({ refetch }: HeroProps) {
                         mr: { md: 3 },
                     }}
                 >
-                    <MoonAnimation />
+                    {CelstialBodyConfig?.ctaAnimation}
                 </Box>
             </Grid>
         </Grid>

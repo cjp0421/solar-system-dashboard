@@ -12,7 +12,7 @@ describe('Moon', () => {
         ).as('getMoon');
     });
 
-    it('displays the hero section and CTA navigation', () => {
+    it('displays the hero section and CTA navigation with Moon details', () => {
         cy.visit('/moon');
         cy.get('header').within(() => {
             cy.contains('Solar System Dashboard').should('be.visible');
@@ -38,10 +38,10 @@ describe('Moon', () => {
         cy.contains('Go to Moon Data').click();
 
 
-        cy.get('#moon-facts [role="progressbar"]', { timeout: 10000 })
+        cy.get('[role="progressbar"]', { timeout: 10000 })
             .should('exist');
 
-        cy.get('#moon-facts [role="progressbar"]', { timeout: 10000 })
+        cy.get('[role="progressbar"]', { timeout: 10000 })
             .should('not.exist');
 
         cy.get("main").scrollTo("bottom", { ensureScrollable: false });
@@ -62,11 +62,12 @@ describe('Moon', () => {
 
         cy.wait('@getMoon');
 
-        cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
         cy.get('#moon-facts').within(() => {
             cy.contains("Facts About Earth's Moon").should('be.visible');
         });
+
+        cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
         cy.get('#moon-facts').within(() => {
             cy.contains('Mass').should('be.visible');
@@ -98,7 +99,7 @@ describe('Moon', () => {
 
         cy.wait('@getMoonError');
 
-        cy.contains('Unable to load Moon data. Please try again later.');
+        cy.contains('Unable to load data. Please try again later.');
 
         cy.get('#moon-facts [role="progressbar"]').should('not.exist');
 
@@ -122,7 +123,7 @@ describe('Moon', () => {
         cy.contains('Go to Moon Data').click();
         cy.wait('@failMoon');
 
-        cy.contains('Unable to load Moon data').should('be.visible');
+        cy.contains('Unable to load data').should('be.visible');
 
         cy.intercept(
             'GET',
@@ -157,11 +158,11 @@ describe('Moon', () => {
         // ACCESSIBLE LOADING STATE
         cy.contains('Go to Moon Data').click();
 
-        cy.get('#moon-facts [role="progressbar"').should('exist');
+        cy.get('[role="progressbar"').should('exist');
 
         cy.wait('@getMoon');
 
-        cy.get('#moon-facts [role="progressbar"]').should('not.exist');
+        cy.get('[role="progressbar"]').should('not.exist');
 
         // ACCESSIBLE CONTENT REGION
         cy.get('#moon-facts')
@@ -176,12 +177,12 @@ describe('Moon', () => {
     it('allows keyboard/screen reader users to skip navigation and jump to the Moon Data CTA', () => {
         cy.visit('/moon');
 
-        cy.contains('Skip to Moon data').focus();
+        cy.contains('Skip to main data').focus();
 
-        cy.contains('Skip to Moon data').click();
+        cy.contains('Skip to main data').click();
 
-        cy.focused().should('have.attr', 'id', 'moon-cta');
+        cy.focused().should('have.attr', 'id', 'hero-cta');
 
-        cy.url().should('include', '#moon-cta')
+        cy.url().should('include', '#hero-cta')
     })
 });

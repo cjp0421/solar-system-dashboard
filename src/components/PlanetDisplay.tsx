@@ -3,36 +3,37 @@ import { buildMoonFactRows } from "./utils/buildFactRows";
 import type { CelestialBody } from "../types/celestialBody";
 import PlanetDisplaySkeleton from "./PlanetDisplaySkeleton";
 
-type MoonFactsProps = {
+type CelestialBodyFactsProps = {
     body: CelestialBody | undefined;
     isLoading: boolean;
     isError: boolean;
+    factsTitle: string;
 };
 
-function PlanetDisplay({ body, isLoading, isError }: MoonFactsProps) {
+function PlanetDisplay({ body, isLoading, isError, factsTitle }: CelestialBodyFactsProps) {
     const rows = buildMoonFactRows(body);
 
     return (
         <>
-            <section id="moon-facts">
+            <section id={`${body?.englishName?.toLowerCase()}-facts`}>
                 {isLoading ? (
                     <>
                         {(body || isLoading) ? (
                             <Typography variant="h3" sx={{ fontSize: "1.5rem", p: 2 }}>
-                                Facts About Earth's Moon
+                                {factsTitle}
                             </Typography>
                         ) : null}
                         <PlanetDisplaySkeleton />
                     </>
                 ) : isError ? (
                     <Typography>
-                        Unable to load Moon data. Please try again later.
+                        Unable to load data. Please try again later.
                     </Typography>
                 ) : (
                     <>
                         {body ? (
                             <Typography variant="h3" sx={{ fontSize: "1.5rem", p: 2 }}>
-                                Facts About Earth's Moon
+                                {factsTitle}
                             </Typography>
                         ) : null}
 

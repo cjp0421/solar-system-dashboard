@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 function NavBar() {
     return (
         <header>
-            <a href="#moon-cta" className="skip-link">
-                Skip to Moon data
+            <a href="#hero-cta" className="skip-link">
+                Skip to main data
             </a>
 
             <AppBar component="nav">
