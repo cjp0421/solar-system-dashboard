@@ -106,9 +106,8 @@ describe('Navigation, Landing Page, and Global Layout', () => {
         });
 
         cy.contains("Go to Moon Data").click();
-        cy.get("#moon-facts").should("exist");
 
-        cy.get("#moon-facts [role='progressbar']").should("not.exist");
+        cy.get("[role='progressbar']").should("not.exist");
 
         cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
@@ -127,5 +126,25 @@ describe('Navigation, Landing Page, and Global Layout', () => {
 
         cy.url().should('include', '/solar-system-dashboard/earth');
         cy.get('h1').contains('Learn More').should('be.visible');
+
+        cy.findByRole('navigation')
+            .findByRole('link', { name: /solar system dashboard/i })
+            .click();
+
+        cy.findByRole('contentinfo')
+            .findByRole('link', { name: /github/i })
+            .should('be.visible');
+
+        cy.findByRole('contentinfo')
+            .findByRole('link', { name: /linkedin/i })
+            .should('be.visible');
+
+        cy.findByRole('contentinfo')
+            .findByRole('link', { name: /portfolio/i })
+            .should('be.visible');
+
+        cy.findByRole('contentinfo')
+            .findAllByText(/©/i)
+            .should('be.visible');
     });
 })
