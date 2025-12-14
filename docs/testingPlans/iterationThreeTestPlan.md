@@ -82,7 +82,7 @@ All Earth tests are new for this slice.
 
 ## **A. Navigation Tests (Earth-specific)**
 
-### **NAV-EARTH-001 – Landing Page displays Earth navigation option**
+### **NAV-EARTH-001 – Landing Page displays Earth navigation option and clicking “Earth” navigates to `/earth`**
 
 **Steps**
 1. Visit `/`.  
@@ -91,23 +91,13 @@ All Earth tests are new for this slice.
 4. Assert **Earth** card/button appears under the Planets category.  
 5. Assert that Moon and other items still appear.  
 6. Assert no Earth data UI appears on the Landing Page.
+7. Click on the Earth navigation element.  
+8. Assert URL becomes `/earth`.  
+9. Assert NavBar remains visible.  
+10. Assert placeholder Earth heading renders (prior to Earth feature slice implementation).  
 
 **Expected Result**  
-Earth is visible as a new navigable option from the Landing Page.
-
----
-
-### **NAV-EARTH-002 – Clicking “Earth” navigates to `/earth`**
-
-**Steps**
-1. Visit `/`.  
-2. Click on the Earth navigation element.  
-3. Assert URL becomes `/earth`.  
-4. Assert NavBar remains visible.  
-5. Assert placeholder Earth heading renders (prior to Earth feature slice implementation).  
-
-**Expected Result**  
-Navigation to `/earth` works with client-side routing and global layout remains intact.
+Earth is visible as a new navigable option from the Landing Page. Navigation to `/earth` works with client-side routing and global layout remains intact.
 
 ---
 

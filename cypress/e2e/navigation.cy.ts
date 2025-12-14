@@ -120,5 +120,12 @@ describe('Navigation, Landing Page, and Global Layout', () => {
             expect(rect.bottom).to.be.lte(viewportHeight);
         });
     });
+    it('displays Earth navigation link and navigates to Earth page via card click', () => {
+        cy.visit('/');
 
+        cy.get('[href="/solar-system-dashboard/earth"]').should('be.visible').click();
+
+        cy.url().should('include', '/solar-system-dashboard/earth');
+        cy.get('h1').contains('Learn More').should('be.visible');
+    });
 })

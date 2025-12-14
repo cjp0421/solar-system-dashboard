@@ -10,14 +10,14 @@ type CelestialNavItem = {
 const moons: CelestialNavItem[] = [
     { label: "Earth's Moon", to: "/solar-system-dashboard/moon" },
     { label: "Io", to: "/solar-system-dashboard/io" },
-    { label: "Phobos" }
+    { label: "Phobos", to: "/solar-system-dashboard/phobos" }
 ];
 
 const planets: CelestialNavItem[] = [
-    { label: "Earth" },
-    { label: "Mars" },
-    { label: "Mercury" },
-    { label: "Jupiter" },
+    { label: "Earth", to: "/solar-system-dashboard/earth" },
+    { label: "Mars", to: "/solar-system-dashboard/mars" },
+    { label: "Mercury", to: "/solar-system-dashboard/mercury" },
+    { label: "Jupiter", to: "/solar-system-dashboard/jupiter" },
 ];
 
 export default function LandingPage() {
@@ -116,7 +116,7 @@ export default function LandingPage() {
                 >
                     {planets.map((planet) => (
                         <Grid key={planet.label} size={{ xs: 12, md: 4 }} sx={{ mt: 0.5 }}>
-                            <NavCard label={planet.label} />
+                            <NavCard label={planet.label} to={planet.to} />
                         </Grid>
                     ))}
                 </Grid>
