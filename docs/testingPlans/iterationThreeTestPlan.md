@@ -158,7 +158,7 @@ Loading state shows Skeletons correctly before success rendering.
 **Steps**
 1. `cy.intercept('GET', '**/proxy?id=earth*', { statusCode: 500 }).as('getEarthError')`  
 2. Visit `/earth`.  
-3. Assert visible error message (e.g., “Unable to load Earth data.”)  
+3. Assert visible error message (e.g., “Unable to load data.”)  
 4. Assert no Skeletons are present.  
 5. Assert no Earth fields are rendered.
 
@@ -208,10 +208,6 @@ Example:
 
 ## 6. Notes
 
-- Earth images or animation references should live inside:  
-  `docs/wireframes/earth-success.png`  
-  `docs/wireframes/earth-loading.png`  
-  `docs/wireframes/earth-error.png`
 - Navigation tests go in:  
   `cypress/e2e/navigation.cy.ts`  
   (append NAV-EARTH-001 and NAV-EARTH-002)

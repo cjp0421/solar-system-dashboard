@@ -1,26 +1,31 @@
-import { Grid, Typography } from "@mui/material";
+import Hero from "../components/Hero";
+import PlanetDisplay from "../components/PlanetDisplay";
+import { useBody } from "../queries/useBody";
+import type { CelstialBodyConfig } from "../types/celestialBodyConfig";
+import EarthAnimation from "../components/earthAnimation/EarthAnimation";
+
+const earthConfig: CelstialBodyConfig = {
+    title: "Learn More",
+    subtitle: "About Earth",
+    ctaLabel: "Go to Earth Data",
+    ctaTarget: "#earth-facts",
+    ctaAnimation: <EarthAnimation />,
+    factsTitle: "Facts About Earth"
+};
 
 export default function EarthPage() {
+    const planetID = "earth";
+    const { data, isLoading, isError, refetch } = useBody(planetID);
+
     return (
-        <Grid
-            container
-            spacing={2}
-            sx={{
-                mt: 12,
-                mb: 2,
-                mx: 1,
-                minHeight: '80vh',
-                justifyContent: 'center',
-                alignContent: 'center'
-            }}
-        >
-            <Grid>
-                <Typography variant="h1">Learn More</Typography>
-                <Typography variant="h2">About Earth</Typography>
-                <Typography variant="h5" sx={{ mt: 2 }}>
-                    Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 29.2% of Earth's surface is land consisting of continents and islands, while the remaining 70.8% is covered with water, mostly by oceans. The planet's atmosphere consists mostly of nitrogen and oxygen. Earth has one natural satellite, the Moon, which orbits the planet at an average distance of 384,400 km (238,855 miles).
-                </Typography>
-            </Grid>
-        </Grid>
+        <>
+            <Hero refetch={refetch} CelstialBodyConfig={earthConfig} />
+            <PlanetDisplay
+                body={data}
+                isLoading={isLoading}
+                isError={isError}
+                factsTitle={earthConfig.factsTitle}
+            />
+        </>
     );
 }
