@@ -186,5 +186,5 @@ describe('Moon', () => {
         cy.focused().should('have.attr', 'id', 'hero-cta');
 
         cy.url().should('include', '#hero-cta')
-    })
+    });
 });
