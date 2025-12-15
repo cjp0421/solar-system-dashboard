@@ -62,7 +62,6 @@ describe('Moon', () => {
 
         cy.wait('@getMoon');
 
-
         cy.get('#moon-facts').within(() => {
             cy.contains("Facts About Earth's Moon").should('be.visible');
         });
@@ -176,7 +175,7 @@ describe('Moon', () => {
         cy.get('body')
             .should('not.contain.text', 'Unable to load Moon data')
     });
-    // Accessibility: this test is inttended to practice using 
+    // Accessibility: this test is intended to practice using 
     it('allows keyboard/screen reader users to skip navigation and jump to the Moon Data CTA', () => {
         cy.visit('/moon');
 
