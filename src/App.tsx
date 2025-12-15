@@ -8,6 +8,7 @@ import './index.css';
 import EarthPage from "./routes/EarthPage";
 import IoPage from "./routes/IoPage";
 import PhobosPage from "./routes/PhobosPage";
+import MarsPage from "./routes/MarsPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/solar-system-dashboard/earth" element={<EarthPage />} />
             <Route path="/solar-system-dashboard/io" element={<IoPage />} />
             <Route path="/solar-system-dashboard/phobos" element={<PhobosPage />} />
+            <Route path="/solar-system-dashboard/mars" element={<MarsPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
