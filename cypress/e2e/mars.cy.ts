@@ -2,7 +2,7 @@ describe('Mars', () => {
     beforeEach(() => {
         cy.intercept(
             'GET',
-            '**/proxy?id=Mars*',
+            '**/proxy?id=mars*',
             (req) => {
                 req.on('response', (res) => {
                     res.setDelay(300);
