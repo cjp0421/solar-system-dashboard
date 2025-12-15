@@ -9,6 +9,7 @@ import EarthPage from "./routes/EarthPage";
 import IoPage from "./routes/IoPage";
 import PhobosPage from "./routes/PhobosPage";
 import MarsPage from "./routes/MarsPage";
+import MercuryPage from "./routes/MercuryPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/solar-system-dashboard/io" element={<IoPage />} />
             <Route path="/solar-system-dashboard/phobos" element={<PhobosPage />} />
             <Route path="/solar-system-dashboard/mars" element={<MarsPage />} />
+            <Route path="/solar-system-dashboard/mercury" element={<MercuryPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
