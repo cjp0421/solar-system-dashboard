@@ -7,65 +7,69 @@ type FactRow = {
     explanation?: string;
 }
 
-export const buildMoonFactRows = (body: CelestialBody | undefined): FactRow[] => {
+export const buildFactRows = (body: CelestialBody | undefined): FactRow[] => {
     if (!body) return [];
 
     return [
         {
             label: "Name",
             value: body.englishName,
+            explanation: "This is the commonly used name for the object."
         },
         {
             label: "Type",
             value: body.bodyType,
+            explanation: "This tells what kind of object it is, such as a planet or a moon."
         },
         {
             label: "Orbits",
             value: body.isPlanet
-                ? null
+                ? "The Sun"
                 : capitalize(body.aroundPlanet?.planet ?? ""),
-            explanation: "The Moon orbits around Earth.",
+            explanation: "This shows what larger object it travels around in space."
         },
         {
             label: "Mass",
             value: `${body.mass.massValue} × 10^${body.mass.massExponent}`,
             unit: "kg",
-            explanation: "Mass is the amount of matter in the Moon.",
+            explanation: "Mass is the amount of matter that makes up the object."
         },
         {
             label: "Gravity",
             value: body.gravity,
             unit: "m/s²",
-            explanation: "Gravity is the acceleration due to gravity on the Moon’s surface.",
+            explanation: "Gravity describes how strongly the object pulls things toward its surface."
         },
         {
             label: "Density",
             value: body.density,
             unit: "g/cm³",
-            explanation: "Density measures how compact the Moon’s material is.",
+            explanation: "Density tells how tightly packed the material inside the object is."
         },
         {
             label: "Mean Radius",
             value: body.meanRadius,
             unit: "km",
-            explanation: "Mean radius is the average distance from the Moon’s surface to its center.",
+            explanation: "Mean radius is the average distance from the center of the object to its surface."
         },
         {
             label: "Orbital Period",
             value: body.sideralOrbit.toFixed(2),
             unit: "days",
+            explanation: "The orbital period is how long it takes the object to complete one trip around what it orbits."
         },
         {
             label: "Rotation Period",
             value: body.sideralRotation,
             unit: "hours",
+            explanation: "The rotation period is how long it takes the object to spin once on its axis."
         },
         {
             label: "Escape Velocity",
             value: body.escape,
             unit: "m/s",
-            explanation: "Escape velocity is the speed needed to break free from the Moon’s gravity.",
-        },
+            explanation: "Escape velocity is the speed needed to completely break free from the object’s gravity."
+        }
     ];
 };
 

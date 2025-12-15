@@ -47,13 +47,13 @@ describe('Moon', () => {
         cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
         cy.get('#moon-facts').within(() => {
-            cy.contains('Mass', { timeout: 10000 }).should('be.visible');
-            cy.contains('Gravity').should('be.visible');
-            cy.contains('Density').should('be.visible');
-            cy.contains('Mean Radius').should('be.visible');
-            cy.contains('Orbital Period').should('be.visible');
-            cy.contains('Rotation Period').should('be.visible');
-            cy.contains('Escape Velocity').should('be.visible');
+            cy.contains(/mass/i).should('be.visible');
+            cy.contains(/mean radius/i).should('be.visible');
+            cy.contains(/gravity/i).should('be.visible');
+            cy.contains(/density/i).should('be.visible');
+            cy.contains(/orbital period/i).should('be.visible');
+            cy.contains(/rotation period/i).should('be.visible');
+            cy.contains(/escape velocity/i).should('be.visible');
         });
     });
     it('displays Moon data after successful load', () => {
@@ -70,13 +70,13 @@ describe('Moon', () => {
         cy.get("main").scrollTo("bottom", { ensureScrollable: false });
 
         cy.get('#moon-facts').within(() => {
-            cy.contains('Mass').should('be.visible');
-            cy.contains('Mean Radius').should('be.visible');
-            cy.contains('Gravity').should('be.visible');
-            cy.contains('Density').should('be.visible');
-            cy.contains('Orbital Period').should('be.visible');
-            cy.contains('Rotation Period').should('be.visible');
-            cy.contains('Escape Velocity').should('be.visible');
+            cy.contains(/mass/i).should('be.visible');
+            cy.contains(/mean radius/i).should('be.visible');
+            cy.contains(/gravity/i).should('be.visible');
+            cy.contains(/density/i).should('be.visible');
+            cy.contains(/orbital period/i).should('be.visible');
+            cy.contains(/rotation period/i).should('be.visible');
+            cy.contains(/escape velocity/i).should('be.visible');
 
             cy.get('[role="progressbar"]').should('not.exist');
         });
@@ -103,13 +103,15 @@ describe('Moon', () => {
 
         cy.get('#moon-facts [role="progressbar"]').should('not.exist');
 
-        cy.contains('Mass').should('not.exist');
-        cy.contains('Gravity').should('not.exist');
-        cy.contains('Density').should('not.exist');
-        cy.contains('Mean Radius').should('not.exist');
-        cy.contains('Orbital Period').should('not.exist');
-        cy.contains('Rotation Period').should('not.exist');
-        cy.contains('Escape Velocity').should('not.exist');
+        cy.get("main").scrollTo("bottom", { ensureScrollable: false });
+
+        cy.contains(/mass/i).should('not.exist');
+        cy.contains(/mean radius/i).should('not.exist');
+        cy.contains(/gravity/i).should('not.exist');
+        cy.contains(/density/i).should('not.exist');
+        cy.contains(/orbital period/i).should('not.exist');
+        cy.contains(/rotation period/i).should('not.exist');
+        cy.contains(/escape velocity/i).should('not.exist');
     });
     it('allows retries after an API error', () => {
         cy.intercept(
@@ -136,7 +138,8 @@ describe('Moon', () => {
         cy.wait('@successMoon')
 
         cy.contains("Facts About Earth's Moon").should('be.visible');
-        cy.contains('Mass').should('be.visible');
+        cy.get("main").scrollTo("bottom", { ensureScrollable: false });
+        cy.contains(/mass/i).should('be.visible');
         cy.get('#moon-facts [role="progressbar"]').should('not.exist');
     });
     // Accessibility: this test is intended to do a basic accessibility check

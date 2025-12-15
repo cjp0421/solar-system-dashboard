@@ -1,5 +1,5 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material";
-import { buildMoonFactRows } from "./utils/buildFactRows";
+import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
+import { buildFactRows } from "./utils/buildFactRows";
 import type { CelestialBody } from "../types/celestialBody";
 import PlanetDisplaySkeleton from "./PlanetDisplaySkeleton";
 
@@ -11,7 +11,7 @@ type CelestialBodyFactsProps = {
 };
 
 function PlanetDisplay({ body, isLoading, isError, factsTitle }: CelestialBodyFactsProps) {
-    const rows = buildMoonFactRows(body);
+    const rows = buildFactRows(body);
 
     return (
         <>
@@ -41,8 +41,23 @@ function PlanetDisplay({ body, isLoading, isError, factsTitle }: CelestialBodyFa
                             {rows.map((row) => (
                                 <Card key={row.label} sx={{ width: "50%" }}>
                                     <CardContent>
-                                        <Typography variant="subtitle2">{row.label}:</Typography>
-                                        <Typography variant="subtitle2">{row.value}</Typography>
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                gap: 1,
+                                                mb: 1
+                                            }}
+                                        >
+                                            <Typography
+                                                variant="subtitle2"
+                                                sx={{
+                                                    fontWeight: 900
+                                                }}
+                                            >
+                                                {row.label.toUpperCase()}:
+                                            </Typography>
+                                            <Typography variant="subtitle2">{row.value}</Typography>
+                                        </Box>
                                         <Typography variant="subtitle2">{row.explanation}</Typography>
                                     </CardContent>
                                 </Card>
