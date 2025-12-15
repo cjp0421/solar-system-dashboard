@@ -30,8 +30,13 @@
   },
   "include": [
     "src",
-    "src/components/navBar/NavBar.tsx",
+    "src/components/NavBar.tsx",
     "src/components/Hero.tsx",
-    "src/components/PlanetDisplay.tsx"
+    "src/components/PlanetDisplay.tsx",
+    "src/components/NotFoundPage.tsx",
+    "src/main.tsx",
+    "src/components/Footer.tsx",
+    "src/routes/EarthPage.tsx",
+    "src/routes/MoonPage.tsx"
   ]
 }

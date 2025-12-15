@@ -3,6 +3,7 @@ import PlanetDisplay from "../components/PlanetDisplay";
 import { useBody } from "../queries/useBody";
 import MoonAnimation from "../components/moonAnimation/MoonAnimation";
 import type { CelstialBodyConfig } from "../types/celestialBodyConfig";
+import './skipLink.css';
 
 const moonConfig: CelstialBodyConfig = {
     title: "Learn More",
@@ -19,6 +20,9 @@ export default function MoonPage() {
 
     return (
         <>
+            <a href="#hero-cta" className="skip-link">
+                Skip to main data
+            </a>
             <Hero refetch={refetch} CelstialBodyConfig={moonConfig} />
             <PlanetDisplay
                 body={data}

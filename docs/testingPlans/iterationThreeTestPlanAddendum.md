@@ -77,7 +77,7 @@ This behavior is enforced through **navigation tests**, not page-slice tests.
 
 ---
 
-### NAV-007 – Skip link is rendered on data pages and points to valid content
+### Tested in moon.cy.ts and earth.cy.ts – Skip link is rendered on data pages and points to valid content
 
 **Intent**
 - Ensure skip links exist only on pages where they are meaningful.
@@ -107,6 +107,8 @@ However, any valid solution must satisfy the following constraints:
 - No changes required to Hero or data rendering logic
 - Navigation tests are expanded to include accessibility behavior
 - Landing Page semantics are clarified and improved
+
+**Note**: due to testing limitations, the navigation test is more of a conceptual test/documentation - i.e. it did not fail correctly - so this is something to look into further. 
 
 ---
 

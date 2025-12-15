@@ -147,4 +147,11 @@ describe('Navigation, Landing Page, and Global Layout', () => {
             .findAllByText(/©/i)
             .should('be.visible');
     });
+    // NOTE: This test is more of a documentation/design-level test to ensure that skip links
+    // are made route-aware instead of globally rendered.
+    it('should not display the skip link on the landing page', () => {
+        cy.visit('/');
+
+        cy.get('.skip-link').should('not.exist');
+    });
 })

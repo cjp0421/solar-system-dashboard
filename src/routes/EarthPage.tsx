@@ -3,6 +3,7 @@ import PlanetDisplay from "../components/PlanetDisplay";
 import { useBody } from "../queries/useBody";
 import type { CelstialBodyConfig } from "../types/celestialBodyConfig";
 import EarthAnimation from "../components/earthAnimation/EarthAnimation";
+import './skipLink.css';
 
 const earthConfig: CelstialBodyConfig = {
     title: "Learn More",
@@ -19,6 +20,9 @@ export default function EarthPage() {
 
     return (
         <>
+            <a href="#hero-cta" className="skip-link">
+                Skip to main data
+            </a>
             <Hero refetch={refetch} CelstialBodyConfig={earthConfig} />
             <PlanetDisplay
                 body={data}

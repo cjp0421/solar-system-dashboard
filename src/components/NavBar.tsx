@@ -1,14 +1,9 @@
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
-import './NavBar.css'
 import { Link } from "react-router-dom";
 
 function NavBar() {
     return (
         <header>
-            <a href="#hero-cta" className="skip-link">
-                Skip to main data
-            </a>
-
             <AppBar component="nav">
                 <Toolbar
                     sx={{
