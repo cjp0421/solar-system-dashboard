@@ -6,4 +6,5 @@
   - [CSS Solar System](https://codepen.io/stoumann/pen/XWLqvgN)
 - [Created a realistic moon using just CSS](https://dev.to/freakyspeedster/created-a-realistic-moon-using-just-css-38c5)
   - [Solar System Scope - Solar Textures](https://www.solarsystemscope.com/textures/)
+- [Fandom - Planet Texture Maps](https://planet-texture-maps.fandom.com/wiki/Io)
 - [Space Grotesk Font - Google Fonts](https://fonts.google.com/specimen/Space+Grotesk)
